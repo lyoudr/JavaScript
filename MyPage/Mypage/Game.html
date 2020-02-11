@@ -280,16 +280,10 @@ tr,td{
       var choosenNB = document.getElementById(`actorchoicenumber`).innerText;
       if(choosenNB == 1){
         var girlinformation = JSON.stringify(girl1);
-        console.log(choosenNB);
-        console.log(girlinformation);
         } else if (choosenNB == 2){
         var girlinformation = JSON.stringify(girl2);
-        console.log(choosenNB);
-        console.log(girlinformation);
         } else if (choosenNB == 3){
         var girlinformation = JSON.stringify(girl3);
-        console.log(choosenNB);
-        console.log(girlinformation);
       };
       var xhttp2 = new XMLHttpRequest();
       xhttp2.open("GET","http://127.0.0.1:8887/web_back_end/Mypage_backend/Gamer.json",true);

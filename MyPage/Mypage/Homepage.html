@@ -348,35 +348,35 @@ footer {
     </style>
 
     <script>
-    let Inputcontent = document.getElementById("input");
-    let Btn = document.getElementById("btn");
+        let Inputcontent = document.getElementById("input");
+        let Btn = document.getElementById("btn");
 
-    Inputcontent.addEventListener("change",showPDF);
-    Inputcontent.addEventListener("change",showMusic);
-    Btn.addEventListener("change",showPDF);
-    Btn.addEventListener("change",showMusic);
+        Inputcontent.addEventListener("change",showPDF);
+        Inputcontent.addEventListener("change",showMusic);
+        Btn.addEventListener("change",showPDF);
+        Btn.addEventListener("change",showMusic);
 
-    //Show PDF pecies
-    function showPDF(){
-        var PDF1 = document.getElementById("doc1");
-        var PDF2 = document.getElementById("doc2");
-        var PDF3 = document.getElementById("doc3");
-        if(Inputcontent.value == "Shallow"){
-            PDF1.style.display = "block";
-            PDF2.style.display = "none";
-            PDF3.style.display = "none";
-        } else if (Inputcontent.value == "When You're Gone"){
-            PDF1.style.display = "none";
-            PDF2.style.display = "block";
-            PDF3.style.display = "none";
-        } else if (Inputcontent.value == "My Happy Ending"){
-            PDF1.style.display = "none";
-            PDF2.style.display = "none";
-            PDF3.style.display = "block";
+        //Show PDF pecies
+        function showPDF(){
+            var PDF1 = document.getElementById("doc1");
+            var PDF2 = document.getElementById("doc2");
+            var PDF3 = document.getElementById("doc3");
+            if(Inputcontent.value == "Shallow"){
+                PDF1.style.display = "block";
+                PDF2.style.display = "none";
+                PDF3.style.display = "none";
+            } else if (Inputcontent.value == "When You're Gone"){
+                PDF1.style.display = "none";
+                PDF2.style.display = "block";
+                PDF3.style.display = "none";
+            } else if (Inputcontent.value == "My Happy Ending"){
+                PDF1.style.display = "none";
+                PDF2.style.display = "none";
+                PDF3.style.display = "block";
+            }
         }
-    }
-    //Show Music Pecies
-    function showMusic() {
+        //Show Music Pecies
+        function showMusic() {
         var rmelement = document.getElementsByTagName(`AUDIO`);
         rmelement[0].parentNode.removeChild(rmelement[0]);
         console.log(rmelement);
@@ -406,35 +406,35 @@ footer {
     </script>
 
     <script type="text/javascript">
-    //自製 function :
-    var get = (id) => {
-    return document.getElementById(`${id}`);
-    };
+        //自製 function :
+        var get = (id) => {
+            return document.getElementById(`${id}`);
+        };
 
-    var Game = get(`Game`);
-    var Musicians = get(`Musicians`);
-    var Resume = get(`Resume`);
-    var Discussion = get(`Discussion`);
-    var Inputcontent2 = get(`mySidebar0`);
-    var Searchsidebar = get(`mySidebar1`);
+        var Game = get(`Game`);
+        var Musicians = get(`Musicians`);
+        var Resume = get(`Resume`);
+        var Discussion = get(`Discussion`);
+        var Inputcontent2 = get(`mySidebar0`);
+        var Searchsidebar = get(`mySidebar1`);
 
-    Inputcontent2.addEventListener("keyup",Verify);
+        Inputcontent2.addEventListener("keyup",Verify);
 
-    function Verify() {
-        var filter, ul, li, a, i, txtValue;
-        filter = Inputcontent2.value.toUpperCase();
-        ul = document.getElementById("sidebarlist");
-        li = ul.getElementsByTagName("li");
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            txtValue = a.textContent || a.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "block";
-            } else {
-                li[i].style.display = "none";
+        function Verify() {
+            var filter, ul, li, a, i, txtValue;
+            filter = Inputcontent2.value.toUpperCase();
+            ul = document.getElementById("sidebarlist");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "block";
+                } else {
+                    li[i].style.display = "none";
+                }
             }
         }
-    }
 </script>
 
 </article>
@@ -505,52 +505,30 @@ div.gallery {
     </div>
 </div>
 <script>
-/* By Each Call
-let Gallery = document.querySelectorAll(".gallery");
-let GalleryName = document.getElementById("galleryexplain");
-let GalleryContent = document.getElementById("gallerycontent");
-
-function LoadDoc(typenumber){
-    GalleryName.innerHTML = " ";
-    GalleryContent.innerHTML = " ";
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-            MusictypeArray = JSON.parse(this.responseText);
-            console.log(MusictypeArray);
-            GalleryName.innerHTML = MusictypeArray[typenumber].Name;
-            GalleryContent.innerHTML = MusictypeArray[typenumber].Content;
-        }
-    };
-    xhttp.open("GET","http://127.0.0.1:8887/web_back_end/Mypage_backend/Hompage.json",true);
-    xhttp.send();
-};*/
-
-//By Nodelist.forEach();
-let Gallery = document.querySelectorAll(".gallery");
-let GalleryName = document.getElementById("galleryexplain");
-let GalleryContent = document.getElementById("gallerycontent");
-let GalleryLink= document.getElementById("gallerylink");
+    let Gallery = document.querySelectorAll(".gallery");
+    let GalleryName = document.getElementById("galleryexplain");
+    let GalleryContent = document.getElementById("gallerycontent");
+    let GalleryLink= document.getElementById("gallerylink");
 
 
-Gallery.forEach(function(element,index){
-    element.addEventListener('click',function(){
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                MusictypeArray = JSON.parse(this.responseText);
-                GalleryName.innerHTML = MusictypeArray[index].Name;
-                GalleryContent.innerHTML = MusictypeArray[index].Content;
-                GalleryLink.childNodes[3].childNodes[0].src = MusictypeArray[index].Link1;
-                GalleryLink.childNodes[3].href = MusictypeArray[index].Link2;
-                GalleryLink.childNodes[3].target = "_blank";
-                GalleryLink.childNodes[1].style.display = "block";
-            }
-        };
-        xhttp.open("GET","http://127.0.0.1:8887/web_back_end/Mypage_backend/Hompage.json",true);
-        xhttp.send();
-    });   
-});
+    Gallery.forEach(function(element,index){
+        element.addEventListener('click',function(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    MusictypeArray = JSON.parse(this.responseText);
+                    GalleryName.innerHTML = MusictypeArray[index].Name;
+                    GalleryContent.innerHTML = MusictypeArray[index].Content;
+                    GalleryLink.childNodes[3].childNodes[0].src = MusictypeArray[index].Link1;
+                    GalleryLink.childNodes[3].href = MusictypeArray[index].Link2;
+                    GalleryLink.childNodes[3].target = "_blank";
+                    GalleryLink.childNodes[1].style.display = "block";
+                }
+            };
+            xhttp.open("GET","http://127.0.0.1:8887/web_back_end/Mypage_backend/Hompage.json",true);
+            xhttp.send();
+        });   
+    });
 </script>
 
 <footer style="display:flex;">

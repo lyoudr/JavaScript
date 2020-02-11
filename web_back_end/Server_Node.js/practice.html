@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <input id="Name"/>
+    <input id="Password"/>
+    <button id="btn">Pose</button>
+    <script>
+    var Name = document.getElementById('Name');
+    var Password = document.getElementById('Password');
+    document.getElementById('btn').addEventListener('click',POST);
+    function POST(){
+        console.log(Name.value);
+        console.log(Password.value);
+        var Obj = { 'table': Name.value, 'limit': Password.value };
+        var dbParam = JSON.stringify(Obj);
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function (){
+            if (this.readyState == 4 && this.status == 200) {
+                var myObj = this.responseText;
+                var myHeader = this.getResponseHeader('Content-Type')
+                console.log('Done=>');
+                console.log(myObj);
+                console.log(myHeader);
+                if(this.responseText == "You're account is right"){
+                    window.location.assign("http://127.0.0.1:8080/Ann's_page")
+                }
+            };
+        };
+    xmlhttp.open("POST", "http://127.0.0.1:8080/applyacount", true);
+    xmlhttp.send('q='+ dbParam);
+    };
+    </script>
+</body>
+</html>
