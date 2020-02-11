@@ -1,0 +1,26 @@
+{
+    "name":"John",
+    "age":30,
+    "city":"New York",
+    "Object":{
+        "Blood":"50prm",
+        "Fat":"40ppt",
+        "BMI":20
+    },
+    "Array":[
+        "Apple",
+        "Banana",
+        "Guava"
+    ],
+    "ObjectinArray":[
+        {"A":123 , "B":true , "C":null },
+        "Hi",
+        "You"
+    ],
+    "ArrayinObject":{
+        "array1":["A","B","c"],
+        "array2":["A","B","C"],
+        "array3":["a","B","c"]
+    },
+    "Birth":"2018-12-14"
+}

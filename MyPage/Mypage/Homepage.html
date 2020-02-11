@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>My Homepage</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+}
+/* Style the header */
+header {
+    display: flex;
+    padding: 8px;
+    text-align:left;
+    height: 700px;
+    background-image:url("http://127.0.0.1:8887/MyPage/Image/keyboard.jpg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size:100%;
+    background-attachment:fixed;
+    }   
+    .wrap{
+    position:fixed;
+    top:0;
+    left:0;
+    display: flex;
+    width: 100%;
+    height:12%;
+    background-color:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 2;
+    }
+    .title1{
+    margin-left:1.2%;
+    color:black;
+    font-size:30px;
+    margin-top:1.2%;
+    }
+    /*Creat Search bar*/
+    .title2{
+    margin-left:10%;
+    margin-top:1.5%;
+    padding: 3px;
+    border: none;
+    font-size: 18px;
+    }
+    .title3{
+    margin-top:2%;
+    margin-left:1%;
+    color: black;
+    cursor: pointer;
+    font-size: 20px;
+    }
+    /*Style this LogIn and Signup*/
+    #Loginarea{
+        margin-top:2%;
+        margin-left:18%;
+    }
+    #Loginarea a{
+        color:black;
+        font-size:24px;
+    }  
+    #Loginarea a:hover{
+        color:grey;
+    }
+    #Signuparea{
+        margin-top:2%;
+        margin-left: 2%;
+    }
+    #Signuparea a{
+        color:black;
+        font-size:24px;
+        text-decoration: none;
+    }
+    #Signuparea a:hover{
+        color:grey;
+    }
+    /* Style the Dropdownlist*/
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+    .Dropdownarea{
+        margin-top:1%;
+        display: flex;
+        margin-left: 14%;
+        height:2%;
+    }
+    .dropbtn {
+        width:40%;
+        color: black;
+        padding: 20px;
+        font-size: 24px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropdown {
+        position: relative;
+        font-size: 20px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        text-align: center;
+        background-color: #f9f9f9;
+        min-width:160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index:3;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #f1f1f1}
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+    color:grey;
+    }
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+        float: left;
+        width: 20%;
+        height: 700px; /* only for demonstration, should be removed */
+        padding: 20px;
+    }
+    .sidetop{
+        display: flex;
+        width: 35%;
+    }
+/* Style the list inside the menu */
+article {
+        display:flex;
+        float: left;
+        padding: 20px;
+        width: 80%;
+        height: 1500px; /* only for demonstration, should be removed */
+    }
+    .box {
+        top: 60px;
+        width: 30%;   
+        height:300px;
+        position: relative;
+        display:inline-block;
+        padding:10px;
+        background-color:white;
+    }
+    .box0{
+        text-align:center;
+        position:absolute;
+        top: 95%;
+        width:50%;
+        height:600px; 
+        margin-left:24%; 
+    }
+    .box1{
+        text-align:center;
+        position:absolute;
+        top: 95%;
+        width:50%;
+        height:600px; 
+        margin-left:28%;
+    }
+    .box2{
+        text-align:center;
+        position:absolute;
+        top: 95%;
+        width:50%;
+        height:600px; 
+        margin-left:28%;
+    }
+    .box3{
+        text-align:center;
+        position:absolute;
+        top: 95%;
+        width:50%;
+        height:600px; 
+        margin-left:28%;
+    }
+   
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/*Creative*/
+.medium{
+    background-color: rgb(141, 131, 131);
+    width:100%;
+    height:30%;
+    display: flex;
+}
+
+/* Style the footer */
+footer {
+    text-align: center;
+    color: black;
+}
+.footercontact{
+    margin:30px;
+    cursor: pointer;
+}
+.footercontact:hover{
+    color:grey;
+}
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+    nav, article {
+    width: 100%;
+    height: auto;
+    }
+}
+
+</style>
+</head>
+<body>
+<!--Header-->
+<header>
+<div class="wrap">
+<div class="title1">Ann's page</div>
+<div class="title2"><input class="w3-input w3-border w3-round-large" id="input2" type="text" placeholder="Search.."></div>
+<div class="title3"><i id="submit" class="material-icons" style="font-size:30px;">search</i></div>
+
+<!--Dropdownlist-->
+<div class="Dropdownarea">
+    <div class="dropdown">
+        <div class="dropbtn">Design</div>
+        <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <div class="dropbtn">Conception</div>
+        <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <div class="dropbtn">Pecies</div>
+        <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+        </div>
+    </div>
+</div>
+
+<div id="Loginarea">
+    <a  href="Login.html" target="_blank"><i class="material-icons" style="font-size:30px;">person</i></a>
+</div>
+<div id="Signuparea">
+    <a  href="Signup.html" target="_blank">Sing up</a>
+</div>
+</div>
+</header>
+
+<section>
+    <!-- Sidevar Top -->
+    <nav>
+    <div class="sidetop">
+    <i class="material-icons" style="font-size:36px;cursor:pointer;" onclick="Toggle()">menu</i>
+    <input style="display:none;position: relative;left:20px;border-radius: 10px; border-style:solid; border-color: grey; border-width:0.5px; font-size:20px;" id="mySidebar0" type="text" placeholder="Search.."/>
+    <div style="margin-left: 40px;"><i id="mySidebar1" class="material-icons" style="font-size:30px;display:none;">search</i></div>
+    </div>
+    <!-- Sidebar -->
+    <div style="display:none;" id="mySidebar2">
+        <ul id="sidebarlist" style="list-style-type:none;">
+            <li><a id="Game" class="w3-bar-item w3-button" style="font-size:24px;display:list-item; width:150px;padding:20px;" href="Game.html" target="_blank">Game</a></li>
+            <li><a id="Musicians" class="w3-bar-item w3-button" style="font-size:24px;display:list-item; width:150px;padding:20px;" href="RWDpage.html" target="_blank">Musicians</a></li>
+            <li><a id="Resume" class="w3-bar-item w3-button" style="font-size:24px;display:list-item; width:150px;padding:20px;" href="Resume.html" target="_blank">Resume</a></li>
+            <li><a id="Discussion" class="w3-bar-item w3-button" style="font-size:24px;display:list-item; width:150px;padding:20px;" href="Discussion.html" target="_blank">Discussion</a></li>
+        </ul>
+    </div>
+    </nav>
+    <script>
+        function Toggle(){
+            for(var sidenumber = 0; sidenumber < 3; sidenumber ++){
+                var Side = document.getElementById(`mySidebar${sidenumber}`);
+                if(Side.style.display == "none"){
+                    Side.style.display = "block"
+                } else {
+                    Side.style.display = "none"
+                }
+            }
+        }
+    </script>
+  
+<article>
+    <div class="box">
+        <img src="../Image/Piano.jpg" width="100px" id="picture">
+        <p style="font-size:24px;"> Which song do you want to hear? <br>
+            <ul class="w3-ul" style="list-style-type:none; font-size:24px;">
+                <li>Shallow</li>
+                <li>When You're Gone</li>
+                <li>My Happy Ending</li>
+            </ul>
+        </p>
+        <div style="display:flex;">
+        <input class="w3-input" type="text" id="input" style="position:relative; left:0; bottom: 15px; top:6px;"> 
+        <button id="btn" style="position: relative; left:15px; top: 6px;" class="w3-btn w3-white w3-border">Enter</button>
+        </div>
+        <p id="text"></p>
+    </div>
+    <div class="box0" id="box0">
+    About this Web ... <br/>
+    Hello ! Hey 
+    </div>
+    <div class="box1" id="box1">
+        <audio src="http://127.0.0.1:8887/MyPage/Music/music.mp3" id="music" loop="false" controls hidden = "true"></audio>
+        <embed id="doc1" src="../PDF/Shallow.pdf" width="80%"  height="200%" style="display:none; z-index:1;"/>
+    </div>
+    
+    <div class="box2" id="box2">
+        <embed id="doc2" src="../PDF/Gone.pdf" width="80%" height="200%" style="display:none; z-index:1;"/>
+    </div>
+    
+    <div class="box3" id="box3">
+        <embed id="doc3" src="../PDF/happy_ending.pdf" width="80%" height="200%" style="display:none; z-index:1;"/>
+    </div>
+    <style>
+    audio{
+        position:absolute; right:500px;
+    }
+    </style>
+
+    <script>
+    let Inputcontent = document.getElementById("input");
+    let Btn = document.getElementById("btn");
+
+    Inputcontent.addEventListener("change",showPDF);
+    Inputcontent.addEventListener("change",showMusic);
+    Btn.addEventListener("change",showPDF);
+    Btn.addEventListener("change",showMusic);
+
+    //Show PDF pecies
+    function showPDF(){
+        var PDF1 = document.getElementById("doc1");
+        var PDF2 = document.getElementById("doc2");
+        var PDF3 = document.getElementById("doc3");
+        if(Inputcontent.value == "Shallow"){
+            PDF1.style.display = "block";
+            PDF2.style.display = "none";
+            PDF3.style.display = "none";
+        } else if (Inputcontent.value == "When You're Gone"){
+            PDF1.style.display = "none";
+            PDF2.style.display = "block";
+            PDF3.style.display = "none";
+        } else if (Inputcontent.value == "My Happy Ending"){
+            PDF1.style.display = "none";
+            PDF2.style.display = "none";
+            PDF3.style.display = "block";
+        }
+    }
+    //Show Music Pecies
+    function showMusic() {
+        var rmelement = document.getElementsByTagName(`AUDIO`);
+        rmelement[0].parentNode.removeChild(rmelement[0]);
+        console.log(rmelement);
+        if(Inputcontent.value == "Shallow"){
+            var x = document.createElement("AUDIO");
+            x.setAttribute("src","http://127.0.0.1:8887/MyPage/Music/music.mp3");
+            x.setAttribute("controls", "controls");
+            x.style = "position:absolute; left: 30% ; margin-top:-1280px;"
+            document.getElementById(`box1`).appendChild(x);
+            x.play();
+        }else if (Inputcontent.value == "When You're Gone") {
+            var y = document.createElement("AUDIO");
+            y.setAttribute("src","http://127.0.0.1:8887/MyPage/Music/Gone.mp3");
+            y.setAttribute("controls", "controls");
+            y.style = "position:absolute; left: 30% ; margin-top:-1280px;"
+            document.getElementById("box2").appendChild(y);
+            y.play();
+        }else if (Inputcontent.value == "My Happy Ending") {
+            var z = document.createElement("AUDIO");
+            z.setAttribute("src","http://127.0.0.1:8887/MyPage/Music/Ending.mp3");
+            z.setAttribute("controls", "controls");
+            z.style = "position:absolute; left: 30% ; margin-top:-1280px;"
+            document.getElementById("box3").appendChild(z);
+            z.play();
+        };
+    };
+    </script>
+
+    <script type="text/javascript">
+    //自製 function :
+    var get = (id) => {
+    return document.getElementById(`${id}`);
+    };
+
+    var Game = get(`Game`);
+    var Musicians = get(`Musicians`);
+    var Resume = get(`Resume`);
+    var Discussion = get(`Discussion`);
+    var Inputcontent2 = get(`mySidebar0`);
+    var Searchsidebar = get(`mySidebar1`);
+
+    Inputcontent2.addEventListener("keyup",Verify);
+
+    function Verify() {
+        var filter, ul, li, a, i, txtValue;
+        filter = Inputcontent2.value.toUpperCase();
+        ul = document.getElementById("sidebarlist");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "block";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</article>
+</section>
+
+<!--Concept of creation -->
+<style>
+div.gallery {
+    margin: 40px;
+    border: 1px solid #ccc;
+    width: 300px;
+    cursor: pointer;
+  }
+  
+  div.gallery:hover {
+    border: 1px solid #777;
+  }
+  
+  div.gallery img {
+    width: 100%;
+    height: auto;
+  }
+  
+  div.desc {
+    background-color:white;
+    padding: 15px;
+    text-align: center;
+    color:black;
+    font-size:22px;
+  }
+  .galleryexplain{
+      width:70%;
+      margin-left:5%;
+      margin-top:5%;
+      text-align: center;
+      font-size:22px;
+      color:white;
+      letter-spacing: 2px;
+  }
+  
+</style>
+<div class="medium">
+    <div style="margin-top:50px;">
+        <div class="gallery">
+            <img src="../Image/sing.jpg" alt="5Terre" width="600" height="450">
+            <div class="desc">Sing</div>
+        </div>
+        <div class="gallery">
+            <img src="../Image/composemusic.jpg" alt="5Terre" width="600" height="450">
+            <div class="desc">Compose</div>
+        </div>
+        <div class="gallery">
+            <img src="../Image/recordsmusic.jpg" alt="5Terre" width="600" height="450">
+            <div class="desc">Record</div>
+        </div>
+        <div class="gallery">
+            <img src="../Image/album.jpg" alt="5Terre" width="600" height="450">
+            <div class="desc">Albums</div>
+        </div>
+    </div>
+    <div class="galleryexplain">
+        <p1 id="galleryexplain" style="font-size:24px;line-height: 70px;"></p1><br/>
+        <div id="gallerycontent" style="width:80%;margin-left:10%;margin-top:5%;text-align: justify; line-height: 60px;text-indent: 70px;"></div>
+        <div id="gallerylink">
+            <div style="display:none;float:left;margin-top:10%;margin-left:70%;"> Click me <i class='material-icons' style='margin-right:40px;'>arrow_forward</i></div>
+            <a><img style="width:150px; border-radius: 70px; opacity: 0.5; float:left;margin-top:7%;"/></a>
+        </div>
+    </div>
+</div>
+<script>
+/* By Each Call
+let Gallery = document.querySelectorAll(".gallery");
+let GalleryName = document.getElementById("galleryexplain");
+let GalleryContent = document.getElementById("gallerycontent");
+
+function LoadDoc(typenumber){
+    GalleryName.innerHTML = " ";
+    GalleryContent.innerHTML = " ";
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            MusictypeArray = JSON.parse(this.responseText);
+            console.log(MusictypeArray);
+            GalleryName.innerHTML = MusictypeArray[typenumber].Name;
+            GalleryContent.innerHTML = MusictypeArray[typenumber].Content;
+        }
+    };
+    xhttp.open("GET","http://127.0.0.1:8887/web_back_end/Mypage_backend/Hompage.json",true);
+    xhttp.send();
+};*/
+
+//By Nodelist.forEach();
+let Gallery = document.querySelectorAll(".gallery");
+let GalleryName = document.getElementById("galleryexplain");
+let GalleryContent = document.getElementById("gallerycontent");
+let GalleryLink= document.getElementById("gallerylink");
+
+
+Gallery.forEach(function(element,index){
+    element.addEventListener('click',function(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                MusictypeArray = JSON.parse(this.responseText);
+                GalleryName.innerHTML = MusictypeArray[index].Name;
+                GalleryContent.innerHTML = MusictypeArray[index].Content;
+                GalleryLink.childNodes[3].childNodes[0].src = MusictypeArray[index].Link1;
+                GalleryLink.childNodes[3].href = MusictypeArray[index].Link2;
+                GalleryLink.childNodes[3].target = "_blank";
+                GalleryLink.childNodes[1].style.display = "block";
+            }
+        };
+        xhttp.open("GET","http://127.0.0.1:8887/web_back_end/Mypage_backend/Hompage.json",true);
+        xhttp.send();
+    });   
+});
+</script>
+
+<footer style="display:flex;">
+    <div style="margin-left:30%;margin-top:5%;bottom:400px;">
+        <img src="../Image/contact.jpg" 
+        style =
+        " 
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 400px; 
+        opacity: 0.5;">
+    </div>
+    <div style="margin-left:5%;font-size:22px;letter-spacing:3px;margin-top:5%;">
+        <div class="footercontact"><i class="material-icons" style="margin-right:30px;">book</i>Blog</div>
+        <div class="footercontact" style="margin-left:100px;"><a href="https://www.facebook.com/lyoudr" target="_blank" style="text-decoration:none;"><i class="fa fa-facebook-square" style="margin-right:30px;"></i>Facebook</a></div>
+        <div class="footercontact" style="margin-left:47px;"><i class="material-icons" style="margin-right:30px;">email</i>Email</div>
+        <div class="footercontact" style="margin-left:110px;"><i class="fa fa-instagram" style="margin-right:30px;"></i>Instagram</div>
+    </div>
+</footer>
+
+</body>
+</html>

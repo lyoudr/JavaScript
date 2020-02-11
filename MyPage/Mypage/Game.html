@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.img {
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
+    }
+.container {
+  position: relative;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  font-family: Arial, Helvetica, sans-serif;
+  color:white;
+}
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+}
+
+/* Hide the images by default */
+
+/* Next & previous buttons */
+.prev, .next {
+  position: absolute;
+  cursor: pointer;
+  left:3%;
+  top: 46%;
+  width: auto;
+  padding: 16px;
+  color:rgb(201, 126, 126);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.prev{
+  float: left;
+}
+.next {
+  float: left;
+  margin-left:35%;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Define the actorimg */
+.actorimg{
+  border-radius: 50%;
+  height: 400px; 
+}
+.actorguide{
+   letter-spacing: 2px;
+   font-size: 30px;
+}
+.table{
+  letter-spacing: 2px;
+  font-size:20px;
+  text-align: center;
+}
+/* The dots/bullets/indicators */
+.dotarea{
+  margin-left: 20.5%;
+  margin-top: 3%;
+}
+.dot {
+  margin:0 2px;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+tr,td{
+  border:1px solid black;
+  padding: 20px;
+}
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/*button style*/
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+.button5:hover {
+  background-color: #555555;
+  color: white;
+}
+</style>
+</head>
+<body style="margin:0;font-family: Arial, Helvetica, sans-serif;">
+    <div class="container">
+    <img class="img" src="../Image/choice.jpg">
+      <div class="center">Choose a character you want...</div> 
+    </div>
+
+    <!-- Slideshow container -->
+    <div  class="slideshow-container">
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">          
+          <div style="margin-left:15%;margin-top:5%;">
+            <img class="actorimg" src="../Image/beauty_1.jpg">
+          </div>
+          <div style="margin-left:18%;margin-top: 10%;">
+            <div class="actorguide" id="actor1" style="margin-left:24%;"></div>
+            <table class="table"id="form1" style="margin-top:7%;"></table>
+          </div>
+        </div>
+      
+        <div class="mySlides fade">          
+          <div style="margin-left:6%;margin-top:5%;">
+            <img class="actorimg" src="../Image/beauty_2.jpg">
+          </div>
+          <div style="margin-left:10%;margin-top: 10%;">
+            <div class="actorguide" id="actor2" style="margin-left:28%;"></div>
+            <table class="table" id="form2" style="margin-top:7%;"></table>
+          </div>
+        </div>
+      
+        <div class="mySlides fade">
+          <div style="margin-left:9%;margin-top:5%;">
+            <img class="actorimg" src="../Image/beauty_3.jpg">
+          </div>
+          <div style="margin-left:13%;margin-top: 10%;">
+            <div class="actorguide" id="actor3" style="margin-left:29%;"></div>
+            <table class="table" id="form3" style="margin-top:7%;"></table>
+          </div>
+        </div>
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)"> &#10094;</a>
+        <a class="next" onclick="plusSlides(1)"> &#10095;</a>
+    </div><br/>
+      
+    <!-- The dots/circles -->
+      <div class="dotarea">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+      </div>
+
+      <!-- Choose this Actor -->
+      <div id="actorchoice" style="width:20%; font-size:20px;cursor:pointer; margin-left:50%; display:flex;">
+        <div><button class="button button5" id="choicebtn">choose</button></div>
+        <div id="actorchoicenumber" style="position:relative; margin-left:200px;"></div>
+      </div>
+
+<script>
+    var slideIndex = 1;
+      showSlides(slideIndex);
+            
+    function plusSlides(n) {
+      showSlides(slideIndex = slideIndex + n);
+    };
+            
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    };
+            
+    function showSlides(n) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function(){
+          if(this.readyState == 4 && this.status == 200){
+          var myObjet = JSON.parse(this.responseText);
+          myFunction(myObjet,slideIndex);
+          };
+      };
+      xhttp.open("GET","http://127.0.0.1:8887/web_back_end/Mypage_backend/Actor.json",true);
+      xhttp.send();
+        
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      console.log(slides);//抓到三個 div 區塊，編號為:0, 1, 2
+      var dots = document.getElementsByClassName("dot");
+      console.log(dots); // 抓到三個 div 區塊(點)，編號為: 0, 1, 2
+      if (n > slides.length) {slideIndex = 1}; // 當捲動到超過第三張，會回到第一張   
+      if (n < 1) {slideIndex = slides.length}; // 當捲動到小於第一張，會跳到第三張
+      //藉由上述兩個 if 來讓圖片顯示成一個循環
+
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+      };//使三個 slide div 區塊都不顯示
+
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace("active", "");// 當每次呼叫 showSlides() function 時，都會先將 dot 的 className 從 "active" 換成 "";
+      };
+
+      slides[slideIndex-1].style.display = "flex  ";//第一次顯示第一張(0) 
+      console.log(slideIndex-1) ;
+      dots[slideIndex-1].className.replace("", "active");
+      
+      };
+    
+    function myFunction(ReceivedObj,slideIndex){
+      var RmActor = document.getElementById(`actorchoicenumber`);
+      RmActor.parentNode.removeChild(RmActor);
+      //Display text content
+      console.log(typeof slideIndex);
+      console.log(ReceivedObj);
+      var i;
+      var x;
+      var table = " ";
+      document.getElementById(`actor${slideIndex}`).innerHTML = ReceivedObj[`Actor${slideIndex}`].Name;
+      document.getElementById(`actor${slideIndex}`).style.letterSpacing = '3px';
+      for(i in ReceivedObj[`Actor${slideIndex}`]){
+        table += "<tr><td>"+ i +"</td><td>"+ ReceivedObj[`Actor${slideIndex}`][i] + "</td></tr>"
+      };
+
+      console.log(table);
+      document.getElementById(`form${slideIndex}`).innerHTML = table;
+      var Actorchoice = document.createElement(`div`);
+      Actorchoice.innerText = `${slideIndex}`;
+      Actorchoice.setAttribute(`id`,`actorchoicenumber`);
+      document.getElementById(`actorchoice`).appendChild(Actorchoice);
+      console.log(Actorchoice);
+    };
+    
+    let ChoiceBtn = document.getElementById("choicebtn");
+    ChoiceBtn.addEventListener("click",ChooseActor);
+    ChoiceBtn.addEventListener("click",Reload);
+    
+    function ChooseActor(){
+      let girl1 = {Name:"Malada",height:"165",Attackability:"wind",Blood:"5",Technical:"crash"};
+      let girl2 = {Name:"Amy",height:"160",Attackability:"water",Blood:"4",Technical:"bomb"};
+      let girl3 = {Name:"Fora",height:"162",Attackability:"fire",Blood:"6",Technical:"kick"};
+      var choosenNB = document.getElementById(`actorchoicenumber`).innerText;
+      if(choosenNB == 1){
+        var girlinformation = JSON.stringify(girl1);
+        console.log(choosenNB);
+        console.log(girlinformation);
+        } else if (choosenNB == 2){
+        var girlinformation = JSON.stringify(girl2);
+        console.log(choosenNB);
+        console.log(girlinformation);
+        } else if (choosenNB == 3){
+        var girlinformation = JSON.stringify(girl3);
+        console.log(choosenNB);
+        console.log(girlinformation);
+      };
+      var xhttp2 = new XMLHttpRequest();
+      xhttp2.open("GET","http://127.0.0.1:8887/web_back_end/Mypage_backend/Gamer.json",true);
+      xhttp2.send(girlinformation);
+      xhttp2.onreadystatechange = function(){
+          if (this.readyState == 4 && this.status == 200){
+            console.log("Hello")
+          }
+        };
+      }; 
+      function Reload(){
+        window.location.assign("http://127.0.0.1:8887/MyPage/Mypage/Gamepage.html");
+      };
+</script> 
+</body>
+</html>

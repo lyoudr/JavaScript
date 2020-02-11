@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+
+body{
+  margin:0;
+}
+
+.bottomleft {
+  position: absolute;
+  left: 80px;
+  font-size: 18px;
+}
+.ParentChange{
+  border-color: rgb(158, 191, 212);
+  background-color: aliceblue;
+}
+[class*="col-"] {
+  float: left;
+  margin: 15px;
+}
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+[class*="main"]{
+  display:block;
+}
+[id ='Leftbox']{
+  margin:0px;
+  padding:15px;
+}
+[id ='Righttbox']{
+  margin:0px;
+  padding:15px;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+  .main{
+        height: 1200px;
+        display:flex;
+        }
+  #Leftbox{
+    margin:8px;
+    box-shadow: 3px 3px 3px 3px #aaaaaa;
+  }
+  #Rightbox{
+    margin:8px;
+    box-shadow: 3px 3px 3px 3px #aaaaaa;
+  }
+  #main::after{
+    content:" ";
+    clear: both;
+    display: table;
+  }
+  #BiographyArea,#BiographyResult{
+    height: 20%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+  .main{
+        height: 1200px;
+        display:flex;
+        }
+  #Leftbox{
+    margin:8px;
+    box-shadow: 3px 3px 3px 3px #aaaaaa;
+    padding:15px;
+  }
+  #Rightbox{
+    margin:8px;
+    box-shadow: 3px 3px 3px 3px #aaaaaa;
+    padding:15px;
+  }
+}
+#BiographyArea,#BiographyResult{
+    height: 20%;
+}
+</style>
+</head>
+<body>
+<div class="main">
+    <div id="Leftbox" class="col-4 col-s-4">
+        <div style="height: 520px">
+            <div style="height:150px; margin-bottom:50px; padding:15px;"><img id="Imagefield" width="60%;" style="margin-left:auto; margin-right:auto;"></div>
+            <label id="ImageLabel" class="btn btn-info">
+            <input type="file" id="InputImage" accept="image/gif, image/jpeg, image/png" placeholder="your photo..." style="display:none;"/>
+            <br/><i class="fa fa-photo"></i> 上傳圖片
+            </label><br/>
+            <p id="p1"><i class="fa fa-user fa-fw w3-margin-right w3-large w3-text-teal"></i>Name: <input id="Name" type="text" placeholder="your name..."> </p>
+            <p id="p2"><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Job: <input id="Job" type="text"/></p>
+            <p id="p3"><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Home: <input id="Home" type="text" placeholder="City, Province"/></p>
+            <p id="p4"><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>Email:<input id="Email" type="email"/></p>
+            <p id="p5"><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>Phone:<input id="Phone" type="number"/></p>
+            <div style="display:flex;">
+            <p style="margin-left:70%; cursor:pointer;" id="Save">Save</p>
+            <p style="margin-left:5%; cursor:pointer;" id="Edit">Edit</p>
+            </div>
+            <hr>
+            <script>
+            // Put Head Images
+            $(document).ready(function(){
+                $(`#InputImage`).change(function(){
+                    readURL(this);
+                });
+            });
+            function readURL(input){
+                console.log(input.files);
+                if(input.files && input.files[0]){
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#Imagefield").attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+                };
+            };
+            // Write Basic Information Save & Edit
+            $(document).ready(function(){
+                $(`#Save`).click(function(){
+                    $(`#ImageLabel`).css('display','none');
+                    $(`#p1`).html(`<i class="fa fa-user fa-fw w3-margin-right w3-large w3-text-teal"></i> Name : <p1 id='newName'>${$('#Name').val()}</p1>`);
+                    $(`#p2`).html(`<i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Job: <p1 id='newJob'> ${$('#Job').val()} </p1>`);
+                    $(`#p3`).html(`<i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Home: <p1 id='newHome'> ${$('#Home').val()} </p1>`);
+                    $(`#p4`).html(`<i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>Email: <p1 id='newEmail'> ${$('#Email').val()} </p1>`);
+                    $(`#p5`).html(`<i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>Phone:<p1 id='newPhone'> ${$('#Phone').val()} </p1>`);
+                });
+            });
+
+            $(document).ready(function(){
+                $(`#Edit`).click(function(){
+                    $(`#ImageLabel`).css('display','block');
+                    $(`#p1`).html(`<i class="fa fa-user fa-fw w3-margin-right w3-large w3-text-teal"></i> Name : <input id='Name' type='text' value = ${$('#newName').text()}>`);
+                    $(`#p2`).html(`<i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Job: <input id = 'Job' type='text' value = ${$('#newJob').text()}>`);
+                    $(`#p3`).html(`<i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Home: <input id = 'Home' type='text' value = ${$('#newHome').text()}>`);
+                    $(`#p4`).html(`<i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>Email: <input id = 'Email' type='text' value = ${$('#newEmail').text()}>`);
+                    $(`#p5`).html(`<i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>Phone: <input  id = 'Phone' type='text' value = ${$('#newPhone').text()}>`);
+                });
+            });
+            </script>
+        </div>
+        <div style="height: 390px">
+            <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
+            
+            <p id="Skillresult1">Skill: <input id="SkillName1" type="text"></p> 
+            <p id="skillgrades1">skill grades: <input id="skill1" type="number" min="1" max="100" placeholder="0 ~ 100%" ></p>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div id="drag1" class="w3-container w3-center w3-round-xlarge w3-teal" style="width:0%"></div>
+            </div>
+            
+            <p id="Skillresult2">Skill: <input id="SkillName2" type="text"></p> 
+            <p id="skillgrades2">skill grades: <input id="skill2" type="number" min="1" max="100" placeholder="0 ~ 100%" ></p>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div id="drag2" class="w3-container w3-center w3-round-xlarge w3-teal" style="width:0%"></div>
+            </div>
+            
+            <p id="Skillresult3">Skill: <input id="SkillName3" type="text"></p> 
+            <p id="skillgrades3">skill grades: <input id="skill3" type="number" min="1" max="100" placeholder="0 ~ 100%" ></p>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div id="drag3" class="w3-container w3-center w3-round-xlarge w3-teal" style="width:0%"></div>
+            </div>
+            
+            <p id="Skillresult4">Skill: <input id="SkillName4" type="text"></p>
+            <p id="skillgrades4">skill grades: <input id="skill4" type="number" min="1" max="100" placeholder="0 ~ 100%" ></p>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div id="drag4" class="w3-container w3-center w3-round-xlarge w3-teal" style="width:0%"></div>
+            </div>
+            <div style="display:flex;">
+            <p style="margin-left:70%;cursor: pointer;" id="Save2">Save</p>
+            <p style="margin-left:5%;cursor: pointer;" id="Edit2">Edit</p>
+            </div>
+            <br>
+        <script>
+        $(document).ready(function(){
+                $('#Edit2').click(function(){
+                    $(this).parent().parent().css('background-color','#F0F8FF');
+                $('#Save2').click(function(){
+                    $(this).parent().parent().css('background-color','white');
+                });
+            });
+        });    
+        $(document).ready(function(){
+            $('#Save2').click(function(){
+                $('#skill1,#skillgrades1').hide();
+                $('#drag1').css('width',`${$('#skill1').val()}%`);
+                $('#drag1').text(`${$('#skill1').val()}%`);
+                $('#skill2,#skillgrades2').hide();
+                $('#drag2').css('width',`${$('#skill2').val()}%`);
+                $('#drag2').text(`${$('#skill2').val()}%`);
+                $('#skill3,#skillgrades3').hide();
+                $('#drag3').css('width',`${$('#skill3').val()}%`);
+                $('#drag3').text(`${$('#skill3').val()}%`);
+                $('#skill4,#skillgrades4').hide();
+                $('#drag4').css('width',`${$('#skill4').val()}%`);
+                $('#drag4').text(`${$('#skill4').val()}%`);
+
+                $(`#Skillresult1`).text(`${$('#SkillName1').val()}`);
+                $(`#Skillresult2`).text(`${$('#SkillName2').val()}`);
+                $(`#Skillresult3`).text(`${$('#SkillName3').val()}`);
+                $(`#Skillresult4`).text(`${$('#SkillName4').val()}`);
+            });
+        });
+        $(document).ready(function(){
+            $('#Edit2').click(function(){
+                $('#skill1,#skillgrades1').show();
+                $('#skill2,#skillgrades2').show();
+                $('#skill3,#skillgrades3').show();
+                $('#skill4,#skillgrades4').show();
+
+                $(`#Skillresult1`).html(`Skill: <input value=${$(`#Skillresult1`).text()} id="SkillName1" type="text">`);
+                $(`#Skillresult2`).html(`Skill: <input value=${$(`#Skillresult2`).text()} id="SkillName2" type="text">`);
+                $(`#Skillresult3`).html(`Skill: <input value=${$(`#Skillresult3`).text()} id="SkillName3" type="text">`);
+                $(`#Skillresult4`).html(`Skill: <input value=${$(`#Skillresult4`).text()} id="SkillName4" type="text">`);
+
+            });
+        });
+        </script>
+        <hr>
+        </div>
+
+        <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b> <i id="AddLan" style="position:relative; left:40%;font-size:20px;cursor: pointer;" class="fa fa-plus-square"></i> </p>
+        <script>
+        let IDNumber = 0;
+        $(document).ready(function(){
+            $('#AddLan').click(function(){
+                IDNumber++;
+                let txt1 = `<p class='newLan' id='Lanhead${IDNumber}'>Language: <input id= 'Lan${IDNumber}'></p>`
+                let txt2 = `<p class='newLangrade' id='Lanheadgrade${IDNumber}'>grade: <input id= 'Langrade${IDNumber}' placeholder = '0 ~ 100%'></p>`
+                let txt3 = `<div id='Langradeheadlength${IDNumber}' style='display:none' class="w3-light-grey w3-round-xlarge"></div>`
+                $('#LanguageLine').before(txt1,txt2,txt3);
+            });
+        });
+        </script>
+        <p>English</p>
+        <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-round-xlarge w3-teal" style="height:24px;width:80%"></div>
+        </div>
+        <div id="LanguageLine" style="display:flex;">
+            <p style="margin-left:70%;cursor: pointer;" id="Save3">Save</p>
+            <p style="margin-left:5%;cursor: pointer;" id="Edit3">Edit</p>
+        </div>
+        <script>
+        $(document).ready(function(){
+            $('#Save3').click(function(){
+                let Languagelength = document.getElementsByClassName('newLan');
+                console.log(Languagelength);
+                for(var CatchID = 1; CatchID <= Languagelength.length ; CatchID++){
+                    $(`#Lanhead${CatchID}`).text(`${$(`#Lan${CatchID}`).val()}`);
+                    $(`#Lanheadgrade${CatchID}`).hide();
+                    $(`#Langradeheadlength${CatchID}`).show();
+                    $(`#Langradeheadlength${CatchID}`).html(`<div id='Langradeheadlength${CatchID}' class="w3-light-grey w3-round-xlarge"><div id='Greenbar${CatchID}' class="w3-round-xlarge w3-teal" style = 'height:24px; width: ${$(`#Langrade${CatchID}`).val()}%'></div></div>`);
+                };
+            });
+        });
+        $(document).ready(function(){
+            $('#Edit3').click(function(){
+                let Languagelength = document.getElementsByClassName('newLan');
+                console.log(Languagelength);
+                for(var CatchID = 1; CatchID <= Languagelength.length ; CatchID++){
+                    $(`#Lanhead${CatchID}`).html(`<p class='newLan' id='Lanhead${CatchID}'>Language: <input id= 'Lan${CatchID}' value =  ${$(`#Lanhead${CatchID}`).text()} ></p>`);
+                    $(`#Lanheadgrade${CatchID}`).html(`<p class='newLangrade' id='Lanheadgrade${CatchID}'>grade: <input id= 'Langrade${CatchID}' value=${Math.round(( 100 * parseFloat($(`#Greenbar${CatchID}`).css('width')) / parseFloat($(`#Greenbar${CatchID}`).parent().css('width'))))} ></p>`);  + '%';
+                    $(`#Lanheadgrade${CatchID}`).show();
+                    $(`#Langradeheadlength${CatchID}`).hide();
+                };
+            });
+        });
+        </script>
+        <br>
+    </div>
+    <div id="Rightbox" class="col-8 col-s-8">
+        <!--Work Experience-->
+        <h2 class="w3-text-grey w3-padding-16">
+            <i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience
+            <i id="AddWork" style="position:relative; left:15%;font-size:20px;cursor: pointer;" class="fa fa-plus-square"></i>
+        </h2>
+        <div style="display:flex;">
+            <p style="margin-left:80%;cursor: pointer;" id="Save4">Save</p>
+            <p style="margin-left:5%;cursor: pointer;" id="Edit4">Edit</p>
+        </div>
+        <hr id="Righthr1">
+        <script>
+        $(document).ready(function(){
+            //Add Work experience;
+            var worknumber = 0;
+            $('#AddWork').click(function(){
+                worknumber++;
+                var Container = `<div id ='Container${worknumber}' class="w3-container"></div>`
+                var txt1 = `<p class='Hidden'>Work: <input class='work' id='work${worknumber}' type='text'></p>`
+                var txt2 = `<p class='Hidden'>Work period: <input id='workperiodbefore${worknumber}' placeholder = 'Mon Year'>  Until : <input id='workperiodnow${worknumber}' placeholder = 'Mon Year'> </p> `
+                var txt3 = `<p class='Hidden'>Work description: <input id='workdescribe${worknumber}' type='text'></p>`
+                $('#Righthr1').before(Container,txt1,txt2,txt3);
+            });
+            //Save Work;
+            $('#Save4').click(function(){
+                let Worklength = document.querySelectorAll(`.work`).length;
+                console.log(Worklength);
+                for(var worknumber = 1; worknumber <= Worklength ; worknumber++){
+                    var Jobtitle = `<h5 class="w3-opacity Showthings Jobtitle"><b id='NewWork${worknumber}'>${$(`#work${worknumber}`).val()}</b></h5>`
+                    var WorkPeriod = `<h6 class="w3-text-teal Showthings" id='NewWorkperiodbefore${worknumber}'><i class="fa fa-calendar fa-fw w3-margin-right"></i>${$(`#workperiodbefore${worknumber}`).val()} - <span class="w3-tag w3-teal w3-round" id= 'NewWorkperiodnow${worknumber}'> ${$(`#workperiodnow${worknumber}`).val()} </span></h6>`
+                    var Workdescrption =  `<p class='Showthings' id='NewWorkdescribe${worknumber}'>${$(`#workdescribe${worknumber}`).val()}</p>`
+                    $('#Righthr1').before($(`#Container${worknumber}`).append(Jobtitle,WorkPeriod,Workdescrption));
+                };
+                $('.Hidden').remove();
+            });
+            //Edit Work;
+            $('#Edit4').click(function(){
+                let Worklength2 = document.querySelectorAll(`.Jobtitle`).length;
+                for (var worknumber = 1; worknumber <= Worklength2 ; worknumber++ ){
+                    var txt1 = `<p class='Hidden'>Work: <input class='work' id='work${worknumber}' type='text' value = ${$(`#NewWork${worknumber}`).text()}></p>`
+                    var txt2 = `<p class='Hidden'>Work period: <input id='workperiodbefore${worknumber}' value = ${$(`#NewWorkperiodbefore${worknumber}`).text()}>  Until : <input id='workperiodnow${worknumber}' value = ${$(`#NewWorkperiodnow${worknumber}`).val()}> </p> `
+                    var txt3 = `<p class='Hidden'>Work description: <input id='workdescribe${worknumber}' type='text' value = ${$(`#Newworkdescribe${worknumber}`).text()}></p>`
+                    $('#Righthr1').before(txt1,txt2,txt3);
+                };
+                $('.Showthings').remove();
+            });
+            //Practice for jQuery child();  
+            $('.w3-opacity').hover(function(){
+                $(this).nextAll().css('color','#6495ED');
+            },
+            function(){
+                $(this).nextAll().css('color','black');
+            });
+        });
+    
+        </script>
+        <!--Education-->
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+        <div class="w3-container">
+            <h5 class="w3-opacity"><b>W3Schools.com</b></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Forever</h6>
+            <p>Web Development! All I need to know in one place</p>
+            <hr>
+        </div>
+        <div class="w3-container">
+            <h5 class="w3-opacity"><b>London Business School</b></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2013 - 2015</h6>
+            <p>Master Degree</p>
+            <hr>
+        </div>
+        <div class="w3-container">
+            <h5 class="w3-opacity"><b>School of Coding</b></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2010 - 2013</h6>
+            <p>Bachelor Degree</p><br>
+        </div>
+        <hr>
+    <script>
+        //jQuery - noConflict() Method.
+        /*JQuery and Other JavaScript Framworks
+        As you already know; jQuery use $ sign as a shortcut for jQuery.
+        There are many other popular JavaScript frameworks like: Angular, Backbone, Ember, Knockout, and more.
+        What if other JavaScript frameworks also use the $ sign as a shortcut ?
+        Here is the solutions:
+        The jQuery noConflict() Method:
+        
+        The noConflict() method releases the hold on the $ shortcut identifier, so that other scripts can use it.
+
+        You can ofcourse still use jQuery, simply by writing the full name instead of the shortcut:
+        */
+        
+        $(document).ready(function(){
+            $('h6').hover(function(){
+                $(this).parent().css('background-color','#F8F8FF');
+            },
+            function(){
+                $(this).parent().css('background-color','white');
+            });
+        });
+    </script>
+        <!--Biography-->
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-address-card fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Biography</h2>
+        <h5 class="w3-opacity"><b>Resume Name: <input style="margin-bottom:30px;" id="Resume"/></b></h5>
+        <div id="BiographySave" style="display:flex;">
+            <p style="margin-left:80%;cursor: pointer;" id="Save5">Save</p>
+            <p style="margin-left:5%;cursor: pointer;" id="Edit5">Edit</p>
+        </div>
+        <div id="BiographyArea" style="width:90%;border: 0.8px solid grey; border-radius: 5px;  background-color: rgb(169, 170, 170);" contenteditable="true"></div>
+        
+    <script>
+    $(document).ready(function(){
+        $('#Save5').click(function(){
+            console.log($('#BiographyArea').text());
+            var NewDIV = `<div id='BiographyResult' style="width:90%;">${$('#BiographyArea').text()}</div>`
+            $('#BiographyArea').remove();
+            $('#BiographySave').after(NewDIV);
+        });
+        $('#Edit5').click(function(){
+            var EditDIV = `<div id="BiographyArea" contenteditable="true" style="width:90%;border: 0.8px solid grey; border-radius: 5px; background-color: rgb(169, 170, 170);">${$('#BiographyResult').text()}</div>`
+            $('#BiographySave').after(EditDIV);
+            $('#BiographyResult').remove();
+        });
+    });
+    </script>
+</div>
+</div>
+<!--Drag Image back and forward-->
+<footer class="col-12 col-s-12">
+<style>
+#div1, #div2 {
+    float: left;
+    width: 100px;
+    height: 35px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+      
+<h2>Drag and Drop</h2>
+<p>Drag the image back and forth between the two div elements.</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="../Image/key.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+</div>
+
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</footer>
+</body>
+</html>

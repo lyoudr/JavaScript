@@ -1,0 +1,21 @@
+
+{
+"Actor1":
+    {
+    "Name":"Malanda",
+    "Property":"Wind",
+    "Attack":5
+    },
+"Actor2":
+    {
+    "Name":"Amy",
+    "Property":"Water",
+    "Attack":3
+    },
+"Actor3":
+    {
+    "Name":"Flora",
+    "Property":"Fire",
+    "Attack":4
+    }
+}
